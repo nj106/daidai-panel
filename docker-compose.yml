@@ -2,10 +2,9 @@
 # - bridge network mode (no dedicated project network)
 # - host port 5700 -> container 5700 (nginx)
 # - volume name pinned to daidai_panel_data via `name:` (no compose project prefix)
-# NOTE: panel-only deployment. The standalone watchtower container already
-# running in Portainer handles image updates (the label below opts this
-# container in); the bundled watchtower service from upstream's compose is
-# intentionally omitted to avoid running two watchtower instances.
+# NOTE: panel-only deployment. The upstream compose's bundled watchtower
+# service is omitted because a standalone watchtower container is already
+# running in Portainer.
 services:
   daidai-panel:
     image: linzixuanzz/daidai-panel:latest
@@ -19,8 +18,6 @@ services:
     environment:
       TZ: "Asia/Shanghai"
       CONTAINER_NAME: "daidai-panel"
-    labels:
-      - com.centurylinklabs.watchtower.enable=true
 
 volumes:
   daidai-panel-data:

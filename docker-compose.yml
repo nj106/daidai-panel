@@ -9,6 +9,8 @@ services:
   daidai-panel:
     image: linzixuanzz/daidai-panel:latest
     container_name: daidai-panel
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     network_mode: bridge
     restart: unless-stopped
     ports:
